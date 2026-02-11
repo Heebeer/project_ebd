@@ -23,4 +23,12 @@ public class CongregacaoService {
     public List<Congregacao> listar() {
         return repository.findAll();
     }
+
+    public Congregacao criar(String nome) {
+        Congregacao c = new Congregacao();
+        c.setNome(nome);
+        String codigo = nome == null ? "" : nome.toLowerCase().replaceAll("\\s+", "_");
+        c.setCodigo(codigo);
+        return salvar(c);
+    }
 }
